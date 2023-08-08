@@ -3,7 +3,7 @@ package BoardGame;
 public class Board {
     private int rows;//Um tabuleiro tem linhas
     private int collumns;//Um tabuleiro tem colunas
-    protected Piece[][] pieces;
+    protected Piece[][] pieces;//Matriz de peças
 
     public Board(int rows, int collumns) {
         this.rows = rows;
@@ -33,5 +33,11 @@ public class Board {
 
     public Piece pieces(Position position){
         return pieces[position.getRow()][position.getColumn()];
+    }
+
+    //Indicação onde por a peça e qual peça
+    public void placePiece(Piece piece, Position position){
+        pieces[position.getRow()][position.getColumn()] = piece;//Vai igualar á peça
+        //piece.position=position;//A posicao ja nao vai ser nula
     }
 }
