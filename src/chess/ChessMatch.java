@@ -24,11 +24,21 @@ public class ChessMatch {
         }
         return matriz;
     }
-    private void initialSetup(){
-        placeNewPiece('b', 6, new Rook(board, Colour.WHITE));
-        placeNewPiece('c', 3, new Rei(board, Colour.WHITE));
+    private void initialSetup() {
+		placeNewPiece('c', 1, new Rook(board, Colour.WHITE));
+        placeNewPiece('c', 2, new Rook(board, Colour.WHITE));
+        placeNewPiece('d', 2, new Rook(board, Colour.WHITE));
+        placeNewPiece('e', 2, new Rook(board, Colour.WHITE));
+        placeNewPiece('e', 1, new Rook(board, Colour.WHITE));
+        placeNewPiece('d', 1, new Rei(board, Colour.WHITE));
 
-    }
+        placeNewPiece('c', 7, new Rook(board, Colour.BLACK));
+        placeNewPiece('c', 8, new Rook(board, Colour.BLACK));
+        placeNewPiece('d', 7, new Rook(board, Colour.BLACK));
+        placeNewPiece('e', 7, new Rook(board, Colour.BLACK));
+        placeNewPiece('e', 8, new Rook(board, Colour.BLACK));
+        placeNewPiece('d', 8, new Rei(board, Colour.BLACK));
+	}
 
     private void placeNewPiece (char column, int row, ChessPiece chessPiece){
         board.placePiece(chessPiece, new ChessPosition(column, row).toPosition());//Vai converter de posicao normal, para peça de xadrez
