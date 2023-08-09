@@ -1,6 +1,4 @@
-import Aplicacao.UI;
-import BoardGame.Board;
-import BoardGame.Position;
+package Aplicacao;
 import chess.ChessMatch;
 
 
