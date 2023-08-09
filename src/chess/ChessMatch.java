@@ -25,7 +25,12 @@ public class ChessMatch {
         return matriz;
     }
     private void initialSetup(){
-        board.placePiece(new Rook(board, Colour.BLACK), new Position(2, 3));
-        board.placePiece(new Rei(board, Colour.WHITE), new Position(2, 4));
+        placeNewPiece('b', 6, new Rook(board, Colour.WHITE));
+        placeNewPiece('c', 3, new Rei(board, Colour.WHITE));
+
+    }
+
+    private void placeNewPiece (char column, int row, ChessPiece chessPiece){
+        board.placePiece(chessPiece, new ChessPosition(column, row).toPosition());//Vai converter de posicao normal, para peça de xadrez
     }
 }
