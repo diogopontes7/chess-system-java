@@ -1,4 +1,6 @@
 import Aplicacao.UI;
+import BoardGame.Board;
+import BoardGame.Position;
 import chess.ChessMatch;
 
 public class Programa {
@@ -10,6 +12,6 @@ public class Programa {
         ChessMatch chessMatch = new ChessMatch();
 
         UI.printBoard(chessMatch.getPieces());//Classe interface que vai imprimir a tela com as peças
-
+    
     }
 }
