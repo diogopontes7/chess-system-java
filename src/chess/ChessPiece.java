@@ -4,7 +4,7 @@ import BoardGame.Board;
 import BoardGame.Piece;
 
 //Faz parte de uma peça, ou seja, é superclasse de peça
-public class ChessPiece extends Piece{
+public abstract class ChessPiece extends Piece{
 
     private Colour colour;//Cor da peça
 
@@ -16,6 +16,5 @@ public class ChessPiece extends Piece{
     public Colour getColour() {
         return colour;
     }
-    
     
 }
