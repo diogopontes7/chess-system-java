@@ -8,7 +8,7 @@ public class ChessPosition {
 
     public ChessPosition(char column, int row) {
         if(column < 'a' || column > 'h' || row<1 || row>8){
-            throw new ChessException("Não é possivel implementar esses valores para column e row");
+            throw new ChessException("Nao e possivel implementar esses valores para column e row");
         }
         this.column = column;
         this.row = row;

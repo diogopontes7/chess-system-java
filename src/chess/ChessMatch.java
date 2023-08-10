@@ -2,6 +2,7 @@ package chess;
 //Coração do projeto, onde vai ter as regras de xadrez
 
 import BoardGame.Board;
+import BoardGame.Piece;
 import BoardGame.Position;
 import chess.Pecas.Rei;
 import chess.Pecas.Rook;
@@ -42,5 +43,30 @@ public class ChessMatch {
 
     private void placeNewPiece (char column, int row, ChessPiece chessPiece){
         board.placePiece(chessPiece, new ChessPosition(column, row).toPosition());//Vai converter de posicao normal, para peça de xadrez
+    }
+
+    public ChessPiece performChessMoves(ChessPosition sourcePosition, ChessPosition targetPosition){
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();//Tornar de chessPosition, para posição normal, foi por isso que fizemos estes metodos todos
+        validateSourcePosition(source);
+        Piece pecaCapturada = makeMove(source, target);
+        return (ChessPiece)pecaCapturada;
+    }
+
+    private Piece makeMove(Position source, Position target){
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+    //Verifica se nao existe uma peça na posicao de origem
+    //O if vai ser para verificar se existem movimentos possiveis para essa peça
+    private void validateSourcePosition(Position position){
+        if(!board.ExisteUmaPeca(position)){
+            throw new ChessException("Nao existe peça nesta posicao para retirar");
+        }
+        if(!board.pieces(position).IsThereAPossibleMove()){//Se nao tiver nnh movim possivel, nessa peça, nao dá
+            throw new ChessException("Nao existe nenhum movimento possivel para essa peça!!");
+        }
     }
 }

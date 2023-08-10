@@ -14,4 +14,10 @@ public class Rei extends ChessPiece{
     public String toString(){
         return "K";
     }
+
+    @Override
+    public boolean[][] PossibleMoves() {
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getCollumns()];//MAtriz da mesma dimensao do tabuleiro
+        return mat;
+    }
 }

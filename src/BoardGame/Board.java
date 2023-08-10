@@ -39,7 +39,7 @@ public class Board {
     //Indicação onde por a peça e qual peça
     public void placePiece(Piece piece, Position position){
         if(ExisteUmaPeca(position)){
-            throw new BoardException("Já existe uma peça nesta posição : " +position);
+            throw new BoardException("Ja existe uma peça nesta posicao : " +position);
         }
         pieces[position.getRow()][position.getColumn()] = piece;//Vai igualar á peça
         piece.position=position;//A posicao ja nao vai ser nula
@@ -62,4 +62,16 @@ public class Board {
        //Se for diferente de nula significa que existe uma peça nessa posiçao e vai retornar la
     }
 
+    public Piece removePiece(Position position){
+        if(!positionExists(position)){
+            throw new BoardException("A posicao nao existe");
+        }
+        if(pieces(position) == null){
+            return null;
+        }
+        Piece auxi = pieces(position);
+        auxi.position=null;//A posição da peça agora é nula, sendo removida
+        pieces[position.getRow()][position.getColumn()] = null;
+        return auxi;
+    }
 }
