@@ -49,6 +49,7 @@ public class ChessMatch {
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();//Tornar de chessPosition, para posição normal, foi por isso que fizemos estes metodos todos
         validateSourcePosition(source);
+        validateTargetPosition(source,target);
         Piece pecaCapturada = makeMove(source, target);
         return (ChessPiece)pecaCapturada;
     }
@@ -69,4 +70,11 @@ public class ChessMatch {
             throw new ChessException("Nao existe nenhum movimento possivel para essa peça!!");
         }
     }
+
+    private void validateTargetPosition(Position source, Position target){
+       if (!board.pieces(source).MovimentoPossivel(target)) {//Se a peça nao pode ir para aquele destino, nao vai, atiramos uma exceção
+        throw new ChessException("A peca escolhida nao pode se mover para a posicao de destino");
+       }
+    }
+
 }

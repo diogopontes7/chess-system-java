@@ -2,6 +2,7 @@ package chess;
 
 import BoardGame.Board;
 import BoardGame.Piece;
+import BoardGame.Position;
 
 //Faz parte de uma peça, ou seja, é superclasse de peça
 public abstract class ChessPiece extends Piece{
@@ -16,5 +17,10 @@ public abstract class ChessPiece extends Piece{
     public Colour getColour() {
         return colour;
     }
-    
+
+    protected boolean isThereOpponentPiece(Position position){
+        ChessPiece p = (ChessPiece)getBoard().pieces(position);//Peça nessa posição
+        return p != null && p.getColour() != colour;
+        //Se o p existe e se a sua cor é diferente da peça que eu tenho
+    }
 }
