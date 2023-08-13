@@ -45,6 +45,12 @@ public class ChessMatch {
         board.placePiece(chessPiece, new ChessPosition(column, row).toPosition());//Vai converter de posicao normal, para peça de xadrez
     }
 
+    public boolean[][] possibleMoves(ChessPosition sourcePosition){
+        Position position = sourcePosition.toPosition();
+        validateSourcePosition(position);
+        return board.pieces(position).PossibleMoves();//Vai ver a peça nessa posicao e vai indicar os seus movimentos possiveis
+    }//Para imprimir as posiçoes possiveis atraves da peça escolhida
+
     public ChessPiece performChessMoves(ChessPosition sourcePosition, ChessPosition targetPosition){
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();//Tornar de chessPosition, para posição normal, foi por isso que fizemos estes metodos todos

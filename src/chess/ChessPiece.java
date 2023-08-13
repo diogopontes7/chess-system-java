@@ -18,9 +18,8 @@ public abstract class ChessPiece extends Piece{
         return colour;
     }
 
-    protected boolean isThereOpponentPiece(Position position){
-        ChessPiece p = (ChessPiece)getBoard().pieces(position);//Peça nessa posição
-        return p != null && p.getColour() != colour;
-        //Se o p existe e se a sua cor é diferente da peça que eu tenho
-    }
+    protected boolean isThereOpponentPiece(Position position) {
+		ChessPiece p = (ChessPiece)getBoard().pieces(position);//Peça nessa posicao
+		return p != null && p.getColour() != colour;//Se nao for nulo e nao for da mesma cor, existe uma peça nessa posicao oponente
+	}
 }
