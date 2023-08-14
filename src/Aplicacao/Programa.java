@@ -1,6 +1,9 @@
 package Aplicacao;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import chess.ChessException;
@@ -11,14 +14,22 @@ import chess.ChessPosition;
 public class Programa {
     public static void main(String[] args) {
 
+
         // Position p = new Position(2, 4);
         // System.out.println(p);
+        //Lingua definida para portugues
+        Locale.setDefault(new Locale("pt", "PT"));
         Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
-        while (true) {
+        List<ChessPiece> captured = new ArrayList<>();
+
+        //Enquanto nao houver checkmate, a partida continua
+        while (!chessMatch.getCheckMate()) {
             try {
+                System.out.println("Amarelos sao os pretos");
+                System.out.println("Os brancos sao os brancos ne ;)");
                 UI.clearScreen();
-                UI.printBoard(chessMatch.getPieces());// Classe interface que vai imprimir a tela com as peças
+                UI.printMatch(chessMatch, captured);// Classe interface que vai imprimir a tela com as peças
                 System.out.println();
                 System.out.println("Source: ");
                 ChessPosition source = UI.readChessPosition(sc);
@@ -32,6 +43,10 @@ public class Programa {
 
                 ChessPiece capturedPiece = chessMatch.performChessMoves(source, target);
 
+                if(capturedPiece != null){//Se foi capturada
+                    captured.add(capturedPiece);
+                }
+
                 System.out.println("Peca capturada : " + capturedPiece);
                 System.out.println();
             } catch (ChessException e) {
@@ -44,6 +59,7 @@ public class Programa {
             }
 
         }
-
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);//Mostra a partida finalizada
     }
 }

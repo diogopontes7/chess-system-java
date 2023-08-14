@@ -1,8 +1,12 @@
 package Aplicacao;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Colour;
@@ -73,6 +77,25 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
+
+	//Vai imprimir o tabuleiro e o turno e vez de cada um jogar, trocar no programa
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> capturada){
+		printBoard(chessMatch.getPieces());
+		System.out.println();
+		printCapturedPieces(capturada);
+		System.out.println("Turn: " +chessMatch.getTurn());
+		if(!chessMatch.getCheckMate()){
+			System.out.println("A esperar pelo o jogador jogar: " +chessMatch.getColour());
+		if(chessMatch.getCheck()){
+			System.out.println("CHECK!!");
+		}
+	}
+	else{
+		System.out.println("CHECKMATE!!!");
+		System.out.println("Vencedor: " +chessMatch.getColour());
+	}
+	}
+
 	//Este vai receber uma matriz de movimentos possiveis
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		for (int i = 0; i < pieces.length; i++) {
@@ -83,5 +106,20 @@ public class UI {
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
+	}
+
+	//Lista das peças capturadas pretas e brancas
+	//Filtramos com uma expressao lambda
+	private static void printCapturedPieces(List<ChessPiece> capturada){
+		List<ChessPiece> white = capturada.stream().filter(x -> x.getColour() == Colour.WHITE).collect(Collectors.toList());
+		List<ChessPiece> black = capturada.stream().filter(x -> x.getColour() == Colour.BLACK).collect(Collectors.toList());
+		System.out.println("Pecas Capturadas ");
+		System.out.print("Brancas ");
+		System.out.print(ANSI_WHITE);
+		System.out.println(Arrays.toString(white.toArray()));//Imprimir um array em java
+		System.out.print(ANSI_RESET);
+		System.out.print("Pretas ");
+		System.out.println(Arrays.toString(black.toArray()));
+		System.out.print(ANSI_RESET);
 	}
 }

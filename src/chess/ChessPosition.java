@@ -22,15 +22,15 @@ public class ChessPosition {
         return row;
     }
 
-    //Funcao que converte da posicao normal para posicao de xadrez
+    //Funcao que converte da posicao xadrez para posicao normal da matriz
     //Exemplo o a8, é equivalente ao [0][0] da matriz, o a7 o 1,0
     protected Position toPosition(){
         return new Position(8-getRow(), getColumn() - 'a');
     }
 
-    //Da posicao de xadrez para normal
+    //Da posicao de normal para xadrez
     protected static ChessPosition fromPosition(Position position){
-        return new ChessPosition((char) ('a' - position.getColumn()), 8 -position.getRow());
+        return new ChessPosition((char) ('a' + position.getColumn()), 8 -position.getRow());
     }
 
     @Override
