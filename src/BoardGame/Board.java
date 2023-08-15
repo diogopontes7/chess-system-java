@@ -59,7 +59,7 @@ public class Board {
             throw new BoardException("Erro: Posicao nao existe");
         }//Se a posicao nao existe, nao é possivel haver la uma peça
        return pieces(position) !=null;//Do metodo anterior que vai ver se existe uma peça na matriz naquela posição
-       //Se for diferente de nula significa que existe uma peça nessa posiçao e vai retornar la
+       //Se for diferente de nula significa que existe uma peça nessa posiçao e vai retornar verdadeiro
     }
 
     public Piece removePiece(Position position){

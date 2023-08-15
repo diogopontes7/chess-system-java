@@ -3,12 +3,15 @@ package chess;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import BoardGame.Board;
 import BoardGame.Piece;
 import BoardGame.Position;
+import chess.Pecas.Bispo;
+import chess.Pecas.Cavalo;
+import chess.Pecas.Peao;
+import chess.Pecas.Rainha;
 import chess.Pecas.Rei;
 import chess.Pecas.Rook;
 
@@ -61,23 +64,28 @@ public class ChessMatch {
     }
 
     private void initialSetup() {
-        // placeNewPiece('c', 1, new Rook(board, Colour.WHITE));
-        // placeNewPiece('c', 2, new Rook(board, Colour.WHITE));
-        // placeNewPiece('d', 2, new Rook(board, Colour.WHITE));
-        // placeNewPiece('e', 2, new Rook(board, Colour.WHITE));
-        // placeNewPiece('e', 1, new Rook(board, Colour.WHITE));
-        // placeNewPiece('d', 1, new Rei(board, Colour.WHITE));
-
-        placeNewPiece('h', 7, new Rook(board, Colour.WHITE));
-        placeNewPiece('d', 1, new Rook(board, Colour.WHITE));
+        placeNewPiece('a', 1, new Rook(board, Colour.WHITE));
+        placeNewPiece('b', 1, new Cavalo(board, Colour.WHITE));
+        placeNewPiece('c', 1, new Bispo(board, Colour.WHITE));
         placeNewPiece('e', 1, new Rei(board, Colour.WHITE));
+        placeNewPiece('f', 1, new Bispo(board, Colour.WHITE));
+        placeNewPiece('g', 1, new Cavalo(board, Colour.WHITE));
+        placeNewPiece('d', 1, new Rainha(board, Colour.WHITE));
+        placeNewPiece('h', 1, new Rook(board, Colour.WHITE));
+        placeNewPiece('a', 2, new Peao(board, Colour.WHITE));
+        placeNewPiece('b', 2, new Peao(board, Colour.WHITE));
+        placeNewPiece('h', 2, new Peao(board, Colour.WHITE));
 
-        // placeNewPiece('c', 7, new Rook(board, Colour.BLACK));
-        // placeNewPiece('c', 8, new Rook(board, Colour.BLACK));
-        // placeNewPiece('d', 7, new Rook(board, Colour.BLACK));
-        // placeNewPiece('e', 7, new Rook(board, Colour.BLACK));
-        placeNewPiece('b', 8, new Rook(board, Colour.BLACK));
-        placeNewPiece('a', 8, new Rei(board, Colour.BLACK));
+        placeNewPiece('a', 8, new Rook(board, Colour.BLACK));
+        placeNewPiece('b', 8, new Cavalo(board, Colour.BLACK));
+        placeNewPiece('c', 8, new Bispo(board, Colour.BLACK));
+        placeNewPiece('e', 8, new Rei(board, Colour.BLACK));
+        placeNewPiece('f', 8, new Bispo(board, Colour.BLACK));
+        placeNewPiece('g', 8, new Cavalo(board, Colour.BLACK));
+        placeNewPiece('d', 8, new Rainha(board, Colour.BLACK));
+        placeNewPiece('h', 8, new Rook(board, Colour.BLACK));
+        placeNewPiece('a', 7, new Peao(board, Colour.BLACK));
+        placeNewPiece('b', 7, new Peao(board, Colour.BLACK));
     }
 
     private void nextTurn() {
@@ -144,9 +152,10 @@ public class ChessMatch {
     }
 
     private Piece makeMove(Position source, Position target) {
-        Piece p = board.removePiece(source);
+        ChessPiece p = (ChessPiece)board.removePiece(source);
+        p.increaseMoveCount();//Ao fazer o movimento, aumento o numero de jogadas
         Piece capturedPiece = board.removePiece(target);
-        board.placePiece(p, target);// Tira na origem e mete no destion
+        board.placePiece(p, target);// Tira na origem e mete no destino
 
         if (capturedPiece != null) {// Significa que foi capturada
             pecasNoTabuleiro.remove(capturedPiece);// JA nao esta no tabuleiro
@@ -181,7 +190,8 @@ public class ChessMatch {
 
     // Se a pessoa se tentar se mover e por em check, temos que desfazer o movimento
     private void undoMove(Position source, Position target, Piece capturedPiece) {
-        Piece p = board.removePiece(target);// Tira a peça de destino
+        ChessPiece p = (ChessPiece)board.removePiece(target);// Tira a peça de destino
+        p.decreaseMoveCount();//Ao remover o move, decrementamos o numero de movimentos
         board.placePiece(p, source);
 
         if (capturedPiece != null) {
@@ -196,13 +206,13 @@ public class ChessMatch {
     private boolean testCheck(Colour colour) {
         Position kingPosition = king(colour).getChessPosition().toPosition();// Posicao do rei de uma cor pedida
         List<Piece> opponentPieces = pecasNoTabuleiro.stream()
-                .filter(x -> ((ChessPiece) x).getColour() == opponent(colour)).collect((Collectors.toList()));
+                .filter(x -> ((ChessPiece) x).getColour() == opponent(colour)).collect((Collectors.toList()));//A lista dos oponentes
         for (Piece piece : opponentPieces) {
             boolean[][] mat = piece.PossibleMoves();// Matriz de movimentos possiveis dessa matriz
             if (mat[kingPosition.getRow()][kingPosition.getColumn()]) {// Se uma das peças tem alcance verdadeiro ate ao
                                                                        // rei, significa que esta em check
                 return true;// O rei está em check
-            }
+            }//se nesta matriz for true que alguma peça tem alcance sobre o rei, dá true que o rei esta em check
         }
         return false;
     }
