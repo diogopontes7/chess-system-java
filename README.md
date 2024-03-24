@@ -1,18 +1,40 @@
-## Getting Started
+# Chess Game 
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+---
 
-## Folder Structure
+## Introduction
 
-The workspace contains two folders by default, where:
+Welcome to the Chess Game project! This project was developed as part of an online course called [Java Completo Programação Orientada a Objetos +Projetos](https://www.udemy.com/share/1013hw3@Q5lHHzSi-norh-rPRlo6rtaAlq6xh-sJRsCtl9OvDcjUF9TffAomK3YVI1gRV8LREw==/) led by Professor [Nelio Alves](), focusing on Object-Oriented Programming (OOP) principles in Java. This chess game aims to provide an interactive and enjoyable experience for players while demonstrating the implementation of fundamental OOP concepts.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Features
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **User-Friendly Interface**: The game features a simple and intuitive graphical interface to facilitate gameplay.
+- **Legal Move Validation**: Moves are validated according to the rules of chess to ensure a fair and authentic gaming experience.
+- **Check and Checkmate Detection**: The game detects when a player is in check or has been checkmated, providing feedback to the players accordingly.
+- **Undo Move**: Players can undo their previous move if needed, allowing for experimentation and learning.
+- **Restart Game**: Easily restart the game to start a new match without restarting the application.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Installation
 
-## Dependency Management
+To run the Chess Game project, ensure you have the following prerequisites:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Java Development Kit (JDK) installed on your system.
+- Download the Zip file of the repository
+
+Follow these steps to set up and run the project:
+
+1. To execute directly from the terminal, use the exported file from the chess-system-java.jar project. From the root folder of the cloned repository, run:
+
+```
+java -cp export/chess-system-java.jar Aplicacao.Programa
+
+```
+   
+  
+
+
+## Credits
+
+This project was developed by [Diogo Pontes]() as part of [Java Completo Programação Orientada a Objetos +Projetos](https://www.udemy.com/share/1013hw3@Q5lHHzSi-norh-rPRlo6rtaAlq6xh-sJRsCtl9OvDcjUF9TffAomK3YVI1gRV8LREw==/) by Professor Nelio Alves. Special thanks to Professor Nelio Alves for the guidance and knowledge imparted throughout the course.
+
+
