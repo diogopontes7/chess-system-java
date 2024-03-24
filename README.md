@@ -17,7 +17,7 @@ Welcome to the Chess Game project! This project was developed as part of an onli
 ## Installation
 
 To run the Chess Game project, ensure you have the following prerequisites:
-
+- Clone repository in your system
 - Java Development Kit (JDK) installed on your system.
 - Download the Zip file of the repository
 
