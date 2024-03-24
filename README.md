@@ -26,7 +26,7 @@ Follow these steps to set up and run the project:
 1. To execute directly from the terminal, use the exported file from the chess-system-java.jar project. From the root folder of the cloned repository, run:
 
 ```
-java -cp export/chess-system-java.jar Aplicacao.Programa
+java -cp export/chess-system-java-main.jar Aplicacao.Programa
 
 ```
    
