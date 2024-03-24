@@ -11,8 +11,7 @@ Welcome to the Chess Game project! This project was developed as part of an onli
 - **User-Friendly Interface**: The game features a simple and intuitive graphical interface to facilitate gameplay.
 - **Legal Move Validation**: Moves are validated according to the rules of chess to ensure a fair and authentic gaming experience.
 - **Check and Checkmate Detection**: The game detects when a player is in check or has been checkmated, providing feedback to the players accordingly.
-- **Undo Move**: Players can undo their previous move if needed, allowing for experimentation and learning.
-- **Restart Game**: Easily restart the game to start a new match without restarting the application.
+
 
 ## Installation
 
