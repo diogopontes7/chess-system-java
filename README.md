@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Welcome to the Chess Game project! This project was developed as part of an online course called [Java Completo Programação Orientada a Objetos +Projetos](https://www.udemy.com/share/1013hw3@Q5lHHzSi-norh-rPRlo6rtaAlq6xh-sJRsCtl9OvDcjUF9TffAomK3YVI1gRV8LREw==/) led by Professor [Nelio Alves](), focusing on Object-Oriented Programming (OOP) principles in Java. This chess game aims to provide an interactive and enjoyable experience for players while demonstrating the implementation of fundamental OOP concepts.
+Welcome to the Chess Game project! This project was developed as part of an online course called [Java Completo Programação Orientada a Objetos +Projetos](https://www.udemy.com/share/1013hw3@Q5lHHzSi-norh-rPRlo6rtaAlq6xh-sJRsCtl9OvDcjUF9TffAomK3YVI1gRV8LREw==/) led by Professor Nelio Alves, focusing on Object-Oriented Programming (OOP) principles in Java. This chess game aims to provide an interactive and enjoyable experience for players while demonstrating the implementation of fundamental OOP concepts.
 
 ## Features
 
